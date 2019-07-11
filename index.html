@@ -65,6 +65,18 @@
       align-items: center;
       margin-right: 8px;
     }
+
+    .tip {
+      color: #ffffff;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    a {
+      text-decoration: none;
+    }
+
   </style>
   <title>垃圾分类学习</title>
 </head>
@@ -85,7 +97,7 @@
 
     <div class="desc">垃圾分类学习</div>
 
-    <a class="down js_down_ios">
+    <a class="down js_down_ios" href="javascript:;">
       <div class="svg-wrap">
         <svg t="1562822437786" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="8124"
           width="18" height="18">
@@ -96,7 +108,7 @@
       </div>
       <div class="btn">立即体验</div>
     </a>
-    <a class="down js_down_android">
+    <a class="down js_down_android" href="https://github.com/microzz/garbage.microzz.com/releases/download/v1.0.0/app-release-v1.0.0.apk" download="app-release-v1.0.0.apk">
       <div class="svg-wrap">
       <svg t="1562822591757" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="9229"
         width="18" height="18">
@@ -105,13 +117,39 @@
           p-id="9230" fill="#ffffff"></path>
       </svg>
       </div>
-      <div class="btn">即将上线</div>
+      <div class="btn">立即下载</div>
     </a>
+
+    <div class="tip js_tip" style="display: none">
+      <svg t="1562856855709" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg"
+        p-id="11736" width="15" height="15">
+        <path
+          d="M907.321664 712.918928c-62.258857-53.261173-106.607633-194.83611-106.607633-361.144017a287.925894 287.925894 0 0 0-194.452322-271.636248 96.245371 96.245371 0 0 0-189.761586 0 287.328892 287.328892 0 0 0-194.452322 271.678891c0 166.307907-44.348775 307.797557-106.607633 361.101374a156.28679 156.28679 0 0 0-54.156677 118.547687 96.117442 96.117442 0 0 0 96.3733 95.94687H414.794401a96.586515 96.586515 0 0 0 193.17303 0h257.13761a96.117442 96.117442 0 0 0 96.3733-95.94687 156.244146 156.244146 0 0 0-54.156677-118.547687z m-749.664873 118.547687a61.192781 61.192781 0 0 1 20.895096-46.011854c86.138967-74.02834 139.869214-240.250961 139.869214-433.67985a192.959815 192.959815 0 0 1 385.91963 0c0 193.471532 53.303816 359.65151 139.869214 433.722493a61.107495 61.107495 0 0 1 20.895096 45.969211H157.656791z m0 0"
+          p-id="11737" fill="#ffffff"></path>
+      </svg>
+      <div style="padding-left: 4px">安卓用户请用自带浏览器打开页面安装</div>
+    </div>
   </div>
   <script>
     (function () {
+      var ua = navigator.userAgent,
+        isAndroid = /(Android);?[\s\/]+([\d.]+)?/i.test(ua),
+        isIos = /iPhone|iPod|iPad/i.test(ua);
+
+        if (isIos) {
+          document.querySelector('.js_down_android').style.display = 'none';
+        } else {
+          document.querySelector('.js_tip').style.display = '';
+        }
+
       document.querySelector('.js_down_ios').addEventListener('click', function() {
-        location.href = 'https://apps.apple.com/cn/app/%E5%9E%83%E5%9C%BE%E5%88%86%E7%B1%BB%E5%AD%A6%E4%B9%A0/id1472116454?from=singlemessage&isappinstalled=0';
+        location.href = 'garbage://';
+        setTimeout(function() {
+          location.href = 'https://apps.apple.com/cn/app/%E5%9E%83%E5%9C%BE%E5%88%86%E7%B1%BB%E5%AD%A6%E4%B9%A0/id1472116454?from=singlemessage&isappinstalled=0';
+        }, 100);
+      });
+      document.querySelector('.js_down_android').addEventListener('click', function() {
+        location.href = 'garbage://';
       });
     })();
   </script>
